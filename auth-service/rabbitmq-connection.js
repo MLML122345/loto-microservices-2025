@@ -27,13 +27,13 @@ class RabbitMQConnection {
           this.reconnect();
         });
         
-        console.log('✅ Connected to RabbitMQ successfully');
+        console.log('Connected to RabbitMQ successfully');
         return this.channel;
         
       } catch (error) {
         const waitTime = delay * Math.pow(1.5, i);
-        console.log(`❌ RabbitMQ connection failed: ${error.message}`);
-        console.log(`⏳ Waiting ${waitTime/1000} seconds before retry...`);
+        console.log(`RabbitMQ connection failed: ${error.message}`);
+        console.log(`Waiting ${waitTime/1000} seconds before retry...`);
         
         if (i === retries - 1) {
           console.error('Failed to connect to RabbitMQ after all retries');

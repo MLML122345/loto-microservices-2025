@@ -16,9 +16,3 @@ A microservices-based lottery application built with Node.js, Docker, PostgreSQL
 - Docker Compose
 - Node.js 18+ (for local development)
 
-## Installation
-
-1. Clone the repository:
-```bash
-git clone [your-repo-url]
-cd loto-project

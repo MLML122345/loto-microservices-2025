@@ -64,7 +64,7 @@ app.post('/api/auth/login', async (req, res) => {
 // Lottery routes (public)
 app.get('/api/lottery/draws', async (req, res) => {
   try {
-    const response = await axios.get(`${LOTTERY_SERVICE_URL}/draws`);
+    const response = await axios.get(`${LOTTERY_SERVICE_URL}/draws`); // Changed: removed /api/
     res.json(response.data);
   } catch (error) {
     res.status(error.response?.status || 500).json(error.response?.data || { error: 'Service unavailable' });
@@ -126,6 +126,11 @@ app.get('/api/lottery/bets', verifyToken, async (req, res) => {
   } catch (error) {
     res.status(error.response?.status || 500).json(error.response?.data || { error: 'Service unavailable' });
   }
+});
+
+// Health check endpoint for gateway
+app.get('/health', (req, res) => {
+  res.status(200).json({ status: 'healthy', service: 'gateway' });
 });
 
 const PORT = process.env.PORT || 3000;
