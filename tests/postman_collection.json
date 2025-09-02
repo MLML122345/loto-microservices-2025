@@ -1,0 +1,79 @@
+{
+  "info": {
+    "name": "Lottery API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Register",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"email\":\"user@test.com\",\"password\":\"password123\"}"
+            },
+            "url": "http://localhost:3000/api/auth/register"
+          }
+        },
+        {
+          "name": "Login Admin",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"email\":\"admin@loto.com\",\"password\":\"admin123\"}"
+            },
+            "url": "http://localhost:3000/api/auth/login"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Lottery",
+      "item": [
+        {
+          "name": "Get All Draws",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:3000/api/lottery/draws"
+          }
+        },
+        {
+          "name": "Create Draw (Admin)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {"key": "Content-Type", "value": "application/json"},
+              {"key": "Authorization", "value": "Bearer {{token}}"}
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"draw_date\":\"2025-01-15\",\"prize_amount\":10000}"
+            },
+            "url": "http://localhost:3000/api/lottery/draws"
+          }
+        },
+        {
+          "name": "Place Bet",
+          "request": {
+            "method": "POST",
+            "header": [
+              {"key": "Content-Type", "value": "application/json"},
+              {"key": "Authorization", "value": "Bearer {{token}}"}
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"draw_id\":1,\"numbers\":[5,12,23,34,45],\"complementary_number\":7}"
+            },
+            "url": "http://localhost:3000/api/lottery/bets"
+          }
+        }
+      ]
+    }
+  ]
+}
